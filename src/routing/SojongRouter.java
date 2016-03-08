@@ -16,15 +16,15 @@ import core.SimClock;
 import sojong.Group;
 
 public class SojongRouter extends ActiveRouter {
-	static private ArrayList<Group> groupList = new ArrayList();
-	static private ArrayList<SojongRouter> routerList = new ArrayList();
+	static private ArrayList<Group> groupList = new ArrayList<>();
+	static private ArrayList<SojongRouter> routerList = new ArrayList<>();
 
 	static boolean warmUpEnded = false;
 
 	private int groupID = -1;
 	private boolean isCenter = false;
 
-	private HashMap<DTNHost, Integer> meetCount = new HashMap();
+	private HashMap<DTNHost, Integer> meetCount = new HashMap<>();
 
 	static private boolean isWarmUp() {
 		return 1200 > SimClock.getTime();
