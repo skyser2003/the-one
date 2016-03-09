@@ -64,6 +64,12 @@ Group.speed = 0.5, 1.5
 # Message TTL of 300 minutes (5 hours)
 Group.msgTtl = 300
 
+Group.initialEnergy = 1
+Group.scanEnergy = 0
+Group.scanResponseEnergy = 0
+Group.transmitEnergy = 0
+Group.baseEnergy = 0
+
 Group.nrofHosts = 40
 
 # group1 (pedestrians) specific settings
