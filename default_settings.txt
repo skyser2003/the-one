@@ -53,7 +53,8 @@ Scenario.nrofHostGroups = 6
 
 # Common settings for all groups
 Group.movementModel = ShortestPathMapBasedMovement
-Group.router = SojongRouter
+// Group.router = SojongRouter
+Group.router = DistributedSetCoverRouter
 Group.bufferSize = 5M
 Group.waitTime = 0, 120
 # All nodes have the bluetooth interface
@@ -119,7 +120,7 @@ Group6.nrofHosts = 2
 
 ## Message creation parameters
 # How many event generators
-Events.nrof = 1
+Events.nrof = 0
 # Class of the first event generator
 Events1.class = MessageEventGenerator
 # (following settings are specific for the MessageEventGenerator class)
