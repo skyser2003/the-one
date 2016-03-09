@@ -19,6 +19,7 @@ public class SojongRouter extends ActiveRouter {
 	static private ArrayList<Group> groupList = new ArrayList<>();
 	static private ArrayList<SojongRouter> routerList = new ArrayList<>();
 
+	static int warmupTime = 0;
 	static boolean warmUpEnded = false;
 
 	private int groupID = -1;
@@ -27,14 +28,10 @@ public class SojongRouter extends ActiveRouter {
 	private HashMap<DTNHost, Integer> meetCount = new HashMap<>();
 
 	static private boolean isWarmUp() {
-		return 1200 > SimClock.getTime();
+		return warmupTime > SimClock.getTime();
 	}
 
 	static private void warmUpEnd() {
-		if (isWarmUp() == false) {
-			return;
-		}
-
 		for (SojongRouter r1 : routerList) {
 			for (SojongRouter r2 : routerList) {
 				if (r1.meetCount.containsKey(r2.getHost()) == false) {
@@ -110,11 +107,13 @@ public class SojongRouter extends ActiveRouter {
 	public SojongRouter(Settings s) {
 		super(s);
 		routerList.add(this);
+		warmupTime = new Settings(report.Report.REPORT_NS).getInt(report.Report.WARMUP_S);
 	}
 
 	protected SojongRouter(ActiveRouter r) {
 		super(r);
 		routerList.add(this);
+		warmupTime = new Settings(report.Report.REPORT_NS).getInt(report.Report.WARMUP_S);
 	}
 
 	private void meetCountUp(DTNHost other) {
@@ -158,7 +157,7 @@ public class SojongRouter extends ActiveRouter {
 	public void update() {
 		super.update();
 
-		if (isWarmUp() == false && warmUpEnded == false) {
+		if (warmUpEnded == false && isWarmUp() == false) {
 			warmUpEnded = true;
 			warmUpEnd();
 		}
