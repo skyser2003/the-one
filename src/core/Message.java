@@ -98,6 +98,10 @@ public class Message implements Comparable<Message> {
 		return this.to;
 	}
 
+	public void setTo(DTNHost to) {
+		this.to = to;
+	}
+	
 	/**
 	 * Returns the ID of the message
 	 * @return The message id

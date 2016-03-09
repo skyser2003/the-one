@@ -444,6 +444,10 @@ public abstract class MessageRouter {
 		return m;
 	}
 
+	protected void clearMessages(){
+		messages.clear();
+	}
+	
 	/**
 	 * This method should be called (on the receiving host) when a message
 	 * transfer was aborted.
