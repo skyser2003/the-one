@@ -106,12 +106,17 @@ public class SojongRouter extends ActiveRouter {
 
 	public SojongRouter(Settings s) {
 		super(s);
-		routerList.add(this);
-		warmupTime = new Settings(report.Report.REPORT_NS).getInt(report.Report.WARMUP_S);
+
+		initSelf();
 	}
 
 	protected SojongRouter(ActiveRouter r) {
 		super(r);
+
+		initSelf();
+	}
+
+	private void initSelf() {
 		routerList.add(this);
 		warmupTime = new Settings(report.Report.REPORT_NS).getInt(report.Report.WARMUP_S);
 	}
