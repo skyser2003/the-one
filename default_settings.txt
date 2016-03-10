@@ -155,7 +155,7 @@ MapBasedMovement.mapFile4 = data/shops.wkt
 # how many reports to load
 Report.nrofReports = 4
 # length of the warm up period (simulated seconds)
-Report.warmup = 0
+Report.warmup = 1200
 # default directory of reports (can be overridden per Report with output setting)
 Report.reportDir = reports/
 # Report classes to load
@@ -163,7 +163,6 @@ Report.report1 = ContactTimesReport
 Report.report2 = ConnectivityONEReport
 Report.report3 = DeliveredMessagesReport
 Report.report4 = MessageDeliveryReport
-Report.warmup = 1200
 
 ## Default settings for some routers settings
 ProphetRouter.secondsInTimeUnit = 30
