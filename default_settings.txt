@@ -53,8 +53,8 @@ Scenario.nrofHostGroups = 6
 
 # Common settings for all groups
 Group.movementModel = ShortestPathMapBasedMovement
-// Group.router = SojongRouter
-Group.router = DistributedSetCoverRouter
+Group.router = SojongRouter
+# Group.router = DistributedSetCoverRouter
 Group.bufferSize = 5M
 Group.waitTime = 0, 120
 # All nodes have the bluetooth interface
@@ -63,7 +63,7 @@ Group.interface1 = btInterface
 # Walking speeds
 Group.speed = 0.5, 1.5
 # Message TTL of 300 minutes (5 hours)
-Group.msgTtl = 300
+# Group.msgTtl = 43200
 
 Group.initialEnergy = 1
 Group.scanEnergy = 0
@@ -120,7 +120,7 @@ Group6.nrofHosts = 2
 
 ## Message creation parameters
 # How many event generators
-Events.nrof = 0
+Events.nrof = 1
 # Class of the first event generator
 Events1.class = MessageEventGenerator
 # (following settings are specific for the MessageEventGenerator class)
@@ -153,7 +153,7 @@ MapBasedMovement.mapFile4 = data/shops.wkt
 ## Reports - all report names have to be valid report classes
 
 # how many reports to load
-Report.nrofReports = 4
+Report.nrofReports = 5
 # length of the warm up period (simulated seconds)
 Report.warmup = 1200
 # default directory of reports (can be overridden per Report with output setting)
@@ -163,6 +163,7 @@ Report.report1 = ContactTimesReport
 Report.report2 = ConnectivityONEReport
 Report.report3 = DeliveredMessagesReport
 Report.report4 = MessageDeliveryReport
+Report.report5 = AllSpreadReport
 
 ## Default settings for some routers settings
 ProphetRouter.secondsInTimeUnit = 30

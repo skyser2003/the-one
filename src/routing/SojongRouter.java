@@ -101,6 +101,7 @@ public class SojongRouter extends ActiveRouter {
 
 			group.center = largestMeetRouter;
 			largestMeetRouter.isCenter = true;
+			largestMeetRouter.createMessage("the_single_message");
 		}
 	}
 
@@ -131,6 +132,12 @@ public class SojongRouter extends ActiveRouter {
 		}
 
 		meetCount.put(other, count);
+	}
+
+	private void createMessage(String id) {
+		Message m = new Message(getHost(), null, id, 0);
+		m.setResponseSize(0);
+		createNewMessage(m);
 	}
 
 	@Override
@@ -175,7 +182,7 @@ public class SojongRouter extends ActiveRouter {
 			return;
 		}
 
-		if (isWarmUp() == true || isCenter == true) {
+		if (isWarmUp() == true) {
 			tryAllMessagesToAllConnections();
 		}
 	}
