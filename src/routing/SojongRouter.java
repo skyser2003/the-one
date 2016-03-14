@@ -32,6 +32,21 @@ public class SojongRouter extends ActiveRouter {
 	}
 
 	static private void warmUpEnd() {
+		List<SojongRouter> removeList = new ArrayList<>();
+
+		for (SojongRouter router : routerList) {
+			if (router.getHost() == null) {
+				removeList.add(router);
+				continue;
+			}
+
+			router.clearMessages();
+		}
+
+		for (SojongRouter router : removeList) {
+			routerList.remove(router);
+		}
+
 		for (SojongRouter r1 : routerList) {
 			for (SojongRouter r2 : routerList) {
 				if (r1.meetCount.containsKey(r2.getHost()) == false) {
@@ -182,9 +197,7 @@ public class SojongRouter extends ActiveRouter {
 			return;
 		}
 
-		if (isWarmUp() == true) {
-			tryAllMessagesToAllConnections();
-		}
+		tryAllMessagesToAllConnections();
 	}
 
 	@Override
